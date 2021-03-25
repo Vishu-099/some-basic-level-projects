@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head><title>chatbot my vishal</title>
+<style>
+body{
+background-color:#288ac7;
+}
+
+h1{
+padding:20px;
+font-weight:300;
+font-family:sans-serif;
+font-size:25px;
+background-color:white;
+text-align:center;
+color:black;
+
+}
+
+
+
+.message{
+font-size:25px;
+font-family:'Work Sans', sans-serif;
+text-align:center;
+color:white;
+}
+
+#progress{
+text-align:center;
+border:3px solid white;
+background-color:white;
+color:blue;
+padding:30px;
+}
+
+#foot{
+font-weight:300;
+font-size:25px;
+font-family:'Work Sans', sans-serif;
+text-align:center;
+}
+
+
+
+
+
+</style>
+</head>
+<body>																							
+<h1> This is the messaging website</h1>
+<p id ="foot">Write your name only and get one word for you.</p>
+<div class="message">
+<input id="progress" type="text" name="array[]" value=" " onkeydown="if(event.keyCode == 13){talk()}"/>
+<p id="chatlog"><br/></p>
+</div>
+
+
+
+<script>
+
+know={
+"NEELAKSHI":"my life",
+"Neelakshi":"my life",
+"neelakshi":"my life",
+"ankit":"jigdi",
+"Ankit":"jigdi",
+"ANKIT":"jigdi",
+"rahul":"jigdi",
+"RAHUL":"jigdi",
+"RAHUL":"jigdi",
+"Meenal":"good sense of humor",
+"MEENAL":"good sense of humor",
+"meenal":"good sense of humor",
+"JANVI":"bestie",
+"Janvi":"bestie",
+"janvi":"bestie",
+"ashi":"mastmaula",
+"Ashi":"mastmaula",
+"ASHI":"mastmaula",
+"gaurav":"The traveller",
+"Gaurav":"The traveller",
+"GAURAV":"The traveller",
+"Naman":"The photographer",
+"NAMAN":"The photographer",
+"naman":"The photographer",
+"aman":"camouflage lover",
+"Aman":"camouflage lover",
+"AMAN":"camouflage lover",
+"shadab":"bhoolah",
+"Shadab":"bhoolah",
+"SHADAB":"bhoolah",
+"mandeep":"guddi",
+"MANDEEP":"guddi",
+"Mandeep":"guddi"
+};
+
+
+function talk(){
+var btn =  document.getElementById("submit");
+var user = document.getElementById("progress").value;
+document.getElementById("progress").value="";
+//document.getElementById("chatlog").innerHTML += user+"<br>";
+
+if(user in know){
+document.getElementById("chatlog").innerHTML = "";
+document.getElementById("chatlog").innerHTML += know[user]+"<br>";	
+}
+
+else{
+document.getElementById("chatlog").innerHTML="<b>TYPE AGAIN</b><br>";
+}
+}
+
+</script>
+</body>
+</html>

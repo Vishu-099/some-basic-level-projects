@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="root">
+</div>
+<script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        
+<script crossorigin src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js"></script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.min.js"></script>
+<script src="https://unpkg.com/react-redux@7.2.0/dist/react-redux.min.js"></script>
+
+<!--Let browser know website is optimized for mobile-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0"/>-->
+
+
+<script type="text/babel">
+//const {useState, useEffect} = React;
+
+//const { Provider, useSelector, useDispatch } = ReactRedux;
+//const { createStore } = Redux;
+function incrementCounter(num) {
+  return { type: 'INCREMENT', num: num }
+}
+
+const initialState = {
+  count: 0
+};
+// Reducer function
+function reducer(state = initialState, action) {
+  switch(action.type) {
+    case 'INCREMENT':
+      return { count: state.count + action.num };
+    default:
+      return state;
+  }
+}
+
+function Counter(props) {
+  function handleClick() {
+    props.incrementCounter(1);
+  }
+    return <div>
+    <p>{props.count}</p>
+    <button onClick={handleClick}>Increment</button>
+    </div>;
+}
+
+function mapStateToProps(state) {
+  return {
+    count: state.count
+  };
+}
+const mapDispatchToProps = {
+  incrementCounter
+}
+
+const store = createStore(reducer);
+
+const Counter = connect(mapStateToProps, mapDispatchToProps)(Counter);
+
+const el = <Provider store={store}>
+          <Counter/>
+        </Provider>; 
+
+ReactDOM.render(
+  el, 
+  document.getElementById('root')
+);
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!-- WE USE SETINTERVAL TO CALL THE SHOW FUNCTION EVERY SECOND AND RENDER THE COUNTER ELEMENT ON THE PAGE.
+ONE OF THE GREAT FEATURE OF REACT IS THAT IS UPDATED ONLY THE ELEMENTS THAT NEED AN UPDATE .YOU CAN INSPECT THE HTML OUTPUT OF THE EXAMPLE
+ABOVE AND SEE THAT ONLY THE TEXT IN THE PARAGRAPH GETS UPDATED EVERY SECOND.
+IN PRACTICE , MOST REACT APPS CALL REACTDOM.RENDER()ONCE--> 
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>This is the counter app</title>
+<style>
+body{background-color:skyblue;}
+#root{text-align:center;
+margin-top:100px;      
+}
+</style>
+</head>
+<body>
+<div id="root">
+<h1>This is my counter app</h1>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.7/sass.sync.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+<script crossorigin src="https://unpkg.com/react@latest/umd/react.development.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.min.js"></script>
+<script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+    
+<script type="text/babel">
+let counter=0;
+function show(){
+counter++;
+const el=<p><h2>{counter}</h2></p>;
+ReactDOM.render(el,document.getElementById("root"));
+}
+setInterval(show,1000);
+</script>
+</body>
+</html>

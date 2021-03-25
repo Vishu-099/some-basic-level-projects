@@ -1,0 +1,418 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <style>
+  @import url('https://fonts.googleapis.com/css?family=Raleway');
+
+body{
+	padding: 0;
+	margin: 0;
+	background:#f5f3ed;
+}
+html,h1,h2,h3,h4,h5,h6,a{
+	font-family: "Raleway";
+}
+  
+.navbar{
+	background:#e8272c;
+}
+.nav-link{
+color:#e6e6e1;
+font-size:18px;
+}
+.nav-link:hover
+{
+color:white;
+font-size:20px;
+}
+.navbar-brand{
+color:#e6e6e1;
+font-size:25px;
+}
+.navbar-brand:hover
+{
+color:white;
+}
+/*header style*/
+.header{
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	margin-top:50px;
+}
+.overlay{
+	position: absolute;
+	min-height: 100%;
+	min-width: 100%;
+	left: 0;
+	top: 0;
+	
+}
+.description{
+    position: absolute;
+    top: 30%;
+    margin-top:140px;
+    padding: 2em;
+
+}
+.description h1{
+	color:#e8272c ;
+	
+	}
+.description p{
+	color:#f4f4f4;
+	font-size: 30px;
+	
+	
+}
+.description button{
+	border:1px  solid #F97300;
+	background:#e8272c;
+	color:#fff;
+}
+
+.about{
+ 
+    background-color:#080000;
+	margin: 4em 0;
+	padding: 1em;
+	position: relative;
+}
+.about h1{
+	color:#e8272c;
+	margin: 2em;
+}
+.about h3{
+	color:white;
+	
+}
+.about img{
+    margin-top:-20px;
+	height: 100%;
+    width: 100%;
+    border-radius: 50%
+}
+.about span{
+	display: block;
+	color: #888;
+	position: absolute;
+	left: 115px;
+}
+.about .desc{
+	padding: 2em;
+	border-left:4px solid #10828C;
+}
+.about .desc h3{
+	color: #10828C;
+}
+.about  p{
+	line-height:2;
+	color:#f4f4f9;
+	font-family: "Raleway";
+	}
+.about  p:hover{
+line-height:2;
+color:white;
+font-size:18px;
+font-family: "Raleway";
+	}
+.image{
+margin-top:-200px;
+width:1265px;
+}
+
+/*Portfolio*/
+.portfolio{
+	margin: 4em 0;
+    position: relative;	
+}
+.portfolio h1{
+	color:#e8272c;
+	margin: 2em;	
+}
+.portfolio img{
+	 height: 15rem;
+	 width: 100%;
+	 margin: 1em;
+	 border: 1px solid grey;
+
+}
+
+	 
+.centered{
+  position: absolute;
+  color:black;
+  top: 50%;
+  left: 50%;
+  transform: translate(-40%, 130%);
+  visibility:visible;
+ 
+}
+
+
+
+.contact-form{
+	margin: 6em 0;
+	position: relative;		
+}
+
+.contact-form h1{
+	padding:2em 1px;
+	color: #e8272c; 
+}
+.contact-form .right{
+	max-width: 600px;
+}
+.contact-form .right .btn-primary{
+	background:  #e8272c;
+	color: #fff;
+	border:0;
+}
+.contact-form .right .form-control::placeholder{
+	color: #888;
+	font-size: 16px;
+}
+  </style>
+  
+</head>
+<body>
+<!-- navbar -->
+<nav class="navbar navbar-expand-lg fixed-top ">
+
+	  <a class="navbar-brand" href="#">Home</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+
+	  <div class="collapse navbar-collapse " id="navbarSupportedContent">
+	    <ul class="navbar-nav mr-4">
+	      
+	      <li class="nav-item">
+	        <a class="nav-link" data-value="about" href="#">About</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link " data-value="portfolio" href="#">Portfolio</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link " data-value="blog" href="#">Blog</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link " data-value="team" href="#">
+	        Team</a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link " data-value="contact" href="#">Contact</a>
+	      </li>
+	    </ul>
+	    
+	  </div>
+  <form class="form-inline">
+    <input class="form-control mr-sm-1" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-light " type="submit"><b>Search<b></button>
+  </form>
+  
+</nav>
+<!-- header -->
+<header class="header ">
+<div id="demo" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicators -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+  
+  <!-- The slideshow -->
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+     <img class = "image" src = "https://images.pexels.com/photos/1000445/pexels-photo-1000445.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 "/> 
+    </div>
+    <div class="carousel-item">
+      <img class = "image" src = "https://images.pexels.com/photos/862848/pexels-photo-862848.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+    </div>
+    <div class="carousel-item">
+     <img class = "image" src = "https://images.pexels.com/photos/265702/pexels-photo-265702.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"/>
+    </div>
+  </div>
+  
+  <!-- Left and right controls -->
+  <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a>
+</div>
+
+  <div class="overlay"></div>
+   <div class="container">
+   	  <div class="description ">
+  	<h1>
+  		Memories
+  		<p>
+  	 this is the website to remember the memories that i had with you </p>
+  		<button class="btn btn-outline-secondary btn-lg">See more</button>
+  	</h1>
+  </div>
+   </div>
+  
+</header>
+
+<!-- about section -->
+<div class="about" id="about">
+	<div class="container">
+	  <h1 class="text-center">About Me</h1>
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-sm-12">
+				<img src="file:///C:/Users/vishal/Desktop/bootstrap4-website-master%20(1)/bootstrap4-website-master/images/team-3.jpg" class="img-fluid">
+				<span class="text-justify">trainee Web Developer</span>
+			</div>
+			<div class="col-lg-8 col-md-8 col-sm-12  ">
+			  
+				<h3>Vishal Dhiman</h3>
+				<p>
+				   ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- portfolio -->
+<div class="portfolio" id="portfolio">
+     <h1 class="text-center">Portfolio</h1>
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-4 col-sm-12">
+			 <a href ="#" >
+				<img src="https://images.pexels.com/photos/827993/pexels-photo-827993.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded">
+				<div class="centered">
+				<button type="button" class= "btn btn-danger">Centered</button>
+				</div>
+				</a>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12">
+			 <a href ="#" >
+				<img src="https://images.pexels.com/photos/2253879/pexels-photo-2253879.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded">
+			<div class="centered">
+				<button type="button" class= "btn btn-danger">Centered</button>
+				</div>
+			</a>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12">
+			 <a href ="#"  >
+				<img src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded">
+			<div class="centered">
+				<button type="button" class= "btn btn-danger">Centered</button>
+				</div>
+			</a>
+			</div>
+
+			<div class="col-lg-4 col-md-4 col-sm-12">
+			 <a href ="#" >
+				<img src="https://images.pexels.com/photos/5676744/pexels-photo-5676744.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded">
+			<div class="centered">
+				<button type="button" class= "btn btn-danger">Centered</button>
+				</div>
+			</a>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12">
+			 <a href ="#"  >
+				<img src="https://images.pexels.com/photos/697244/pexels-photo-697244.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded">
+			<div class="centered">
+				<button type="button" class= "btn btn-danger">Centered</button>
+				</div>
+			</a>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12">
+			 <a href ="#"  >
+				<img src="https://images.pexels.com/photos/927451/pexels-photo-927451.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded">
+			<div class="centered">
+				<button type="button" class= "btn btn-danger">Centered</button>
+				</div>
+			</a>
+			</div>
+
+			<div class="col-lg-4 col-md-4 col-sm-12">
+			 <a href ="#" >
+				<img src="https://images.pexels.com/photos/17834/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded">
+			<div class="centered">
+				<button type="button" class= "btn btn-danger">Centered</button>
+				</div>
+			</a>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12">
+			 <a href ="#"  >
+				<img src="https://images.pexels.com/photos/1250452/pexels-photo-1250452.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded">
+			<div class="centered">
+				<button type="button" class= "btn btn-danger">Centered</button>
+				</div>
+			</a>
+			</div>
+			<div class="col-lg-4 col-md-4 col-sm-12">
+			 <a href ="#"  >
+				<img src="https://images.pexels.com/photos/34761/old-people-couple-together-connected.jpg?auto=compress&cs=tinysrgb&dpr=1&w=500" class="rounded">
+			<div class="centered">
+				<button type="button" class= "btn btn-danger">Centered</button>
+				</div>
+			</a>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- Contact form -->
+<div class="contact-form" id="contact">
+	<div class="container">
+		<form>
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-12">
+				  <h1>Get in Touch</h1>	
+				</div>
+				<div class="col-lg-8 col-md-8 col-sm-12 right">
+				   <div class="form-group">
+				   	 <input type="text" class="form-control form-control-lg" placeholder="Your Name" name="">
+				   </div>
+				   <div class="form-group">
+				   	 <input type="email" class="form-control form-control-lg" placeholder="YourEmail@email.com" name="email">
+				   </div>
+				   <div class="form-group">
+				   	 <textarea class="form-control form-control-lg">
+				   	 	
+				   	 </textarea>
+				   </div>
+				   <input type="submit" class="btn btn-primary btn-block" value="Send" name="">
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+<script>
+$(document).ready(function(){
+ $('.header').height($(window).height());
+
+ $(".navbar a").click(function(){
+ 	$("body,html").animate({
+ 		scrollTop:$("#" + $(this).data('value')).offset().top
+ 	},1000)
+  
+ })
+
+})
+</script>
+</body>
+</html>
+

@@ -1,0 +1,47 @@
+<!--
+One of the most common ways that users interact with web pages is through text fields.
+we can handle userinput in React using the "onChange" event of the text field.When the value of the text field changes ,the eventhandler is called ,updating the value of the filed 
+in the component state.
+ -->
+
+ <!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="root">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.7/sass.sync.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+
+<script src="https://unpkg.com/react@latest/umd/react.development.js"crossorigin></script>
+<script  src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"crossorigin></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.min.js"></script>
+
+
+<script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+<script type="text/babel">
+const{useState,useEffect}= window.React
+function Converter(){
+const[km,setKm]= useState(0);
+function handleChange(e){
+setKm(e.target.value);
+}
+function convert(km){
+return(km/1.609).toFixed(2);
+}
+return <div>
+<input type="text" value={km} onChange={handleChange}/>
+<p> {km} km is {convert(km)} miles</p>
+</div>;
+}
+const el =<Converter />;
+ReactDOM.render(el,document.getElementById("root"));
+</script>
+</body>
+</html>
+
+<!-- The value of the text field is accessed via the "e object" , which represents the React event ,it is passed to the event handler function as an argument and can be used to access the event object --> 

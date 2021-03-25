@@ -1,0 +1,51 @@
+<!-- state should not be modified directly instead React provides a setState() method , that can be used to modify state.
+you need to pass an object with the new key:value pairs  to the setState method.
+we use setState bcz when setstate is called ,react automatically re-renders the affected component with the new state.
+Usually the change in the state happens in event handlers.
+here is an example of COUNTER APP using set state method  
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body{background-color:orange;}
+#root{font-size:55px;
+font-family:Arial;
+text-align:center;}
+</style>
+</head>
+<body>
+<div id="root">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.7/sass.sync.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+
+<script src="https://unpkg.com/react@latest/umd/react.development.js"crossorigin></script>
+<script  src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"crossorigin></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.min.js"></script>
+
+
+<script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+<script type="text/babel">
+class Counter extends React.Component{
+state={counter:0}
+increment=()=>{
+this.setState({counter:this.state.counter+1});
+}
+render(){
+return <div>
+<p>{this.state.counter}</p>
+<button onClick = {this.increment}>
+Increment
+</button>
+</div>
+}
+}
+const el= <Counter />;
+ReactDOM.render(el,document.getElementById("root"));
+</script>
+</body>
+</html>

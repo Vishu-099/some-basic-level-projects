@@ -1,0 +1,35 @@
+<!-- components can use other components to generate an output-->
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="root">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.7/sass.sync.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+
+<script src="https://unpkg.com/react@latest/umd/react.development.js"crossorigin></script>
+<script  src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"crossorigin></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.min.js"></script>
+
+
+<script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+<script type="text/babel">
+function Hello(props){
+return <h1> hello {props.name}</h1>;
+}
+function App(){
+return <div>
+<Hello name="tom" />
+<Hello name="luce" />
+<Hello name="martin" />
+</div>
+}
+const el=<App />;
+ReactDOM.render(el,document.getElementById("root"));
+</script>
+</body>

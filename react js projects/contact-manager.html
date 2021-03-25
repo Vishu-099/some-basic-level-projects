@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact Manager</title>
+        <!--
+        author: Burey
+        date: 17/05/2020
+        description: React.js Contacts Manager      
+        -->
+     <style>
+    <!--body {
+
+}
+
+/* center the loader */
+#loader {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 95vh;
+  text-align: center;
+}
+
+/* some animation for the loader */
+@-webkit-keyframes fade {
+  0% {
+    opacity: 0
+  }
+  50% {
+    opacity: 1
+  }
+  100% {
+    opacity: 0
+  }
+}
+
+#loader.fade > h1 {
+  animation: fade 3s infinite;
+}
+
+/* PLACE ALL SCSS CODE BELOW THIS COMMENT */
+/*</style><style type="scss">/**/
+
+h1, p {
+  font-family: Lato;
+}
+
+ul {
+  padding: 0;
+  margin: 10px 0 0 0;
+}
+
+li {
+  list-style-type: none;
+  padding: 10px;
+  margin: 10px;
+  background-color: rgba(61, 120, 175, 0.411);
+  border-radius: 10px;
+}
+
+form {
+  margin: 10px;
+}
+ -->
+  </style>
+    </head>
+    <body>
+ <!--   <div id="loader" class="fade">
+        <h1>Loading...</h1>
+    </div>-->
+    <div id="root"></div>
+    <!-- include sass compiler -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.7/sass.sync.min.js"></script>
+    <!--
+    babel polyfill are required for older devices to run React
+    -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+    <!--
+    it is important that the scripts come after the loader div element.
+    
+    without this the loader will not show as the program will be busy loading the scripts and transpiling any JSX code we have in the Javascript tab and we'll end up with a long white loading screen and no indication if the app is even running.
+    
+    the loader will be hidden by using Javascript once the React code done loading.
+    -->
+    <script crossorigin src="https://unpkg.com/react@latest/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
+       
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.min.js"></script>
+        <script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+//</script><script type="text/babel">
+/*(function scss_compile() {
+    Sass.compile(
+        document.querySelector("style[type=scss]")
+            .innerHTML,
+        function (res) {
+            var s = document.createElement("style");
+            s.innerHTML = res.text;
+            //console.log(res.text);
+            res.formatted && console.error(res.formatted);
+            //if error console.error it.
+            res.text && document.head.appendChild(s);
+            // append style element only if no error.
+        });
+})();
+
+// hide the loader after babel done transpiling the JSX code
+document.getElementById("loader").style.display = "none";
+*/
+// ----- REACT CODE STARTS HERE -----
+// React is injected to window, therefore it's accessible as window.React
+const {useState, useEffect} = window.React;
+
+function AddPersonForm(props) {
+    const [person, setPerson] = useState('');
+
+    function handleChange(e) {
+        setPerson(e.target.value);
+    }
+
+    function handleSubmit(e) {
+        if (person !== '') {
+            props.handleSubmit(person);
+            setPerson('');
+        }
+        e.preventDefault();
+    }
+
+    return (
+        <form onSubmit={handleSubmit}>
+            <input type="text"
+                   placeholder="Add new contact"
+                   onChange={handleChange}
+                   value={person}/>
+            <button type="submit">Add</button>
+        </form>
+    );
+}
+
+function PeopleList(props) {
+    const arr = props.data;
+    const listItems = arr.map((val, index) =>
+        <li key={index}>{val}</li>
+    );
+    return <ul>{listItems}</ul>;
+}
+
+function ContactManager(props) {
+    const [contacts, setContacts] = useState(props.data);
+
+    function addPerson(name) {
+        setContacts([...contacts, name]);
+    }
+
+    return (
+        <div>
+            <AddPersonForm handleSubmit={addPerson}/>
+            <PeopleList data={contacts}/>
+        </div>
+    );
+}
+
+const contacts = ["James Smith", "Thomas Anderson", "Bruce Wayne"];
+
+ReactDOM.render(
+    <ContactManager data={contacts}/>,
+    document.getElementById('root')
+);
+//</script>
+
+
+    </body>
+</html>

@@ -1,0 +1,43 @@
+<!-- 
+* Each element in a list must have a key attribute.
+* Key act as a unique identify ,identifying each element.
+*Usually these are ID's from your data or can be auto-generated indexes.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="root">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.7/sass.sync.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+
+<script src="https://unpkg.com/react@latest/umd/react.development.js"crossorigin></script>
+<script  src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"crossorigin></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.min.js"></script>
+
+
+<script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+<script type="text/babel">
+function MyList(props){
+const arr = props.data ;
+const listItems = arr.map((val,index)=>
+<li key = {index}>{val}</li>
+);
+return <ul>{listItems}</ul>;
+}
+const arr= ["A","B","C"];
+const el = <MyList data = {arr} />;
+ReactDOM.render(el,document.getElementById("root"));
+</script>
+</body>
+</html>
+
+<!--
+ Keys are?important because they uniquely identify elements ,helping React understand which items have changed ,are added 
+or are removed --> 

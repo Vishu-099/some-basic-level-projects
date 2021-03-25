@@ -1,0 +1,56 @@
+<!-- React provides special life cycle methods for class components,which are called when components are mounted ,updated or unmounted
+Mounting: it is the process when a component is rendered on the page.(componentDidMount method is used for that and we will use it in our counter app to set the initial value  of counter.
+Unmounted : it is the process when a component is removed from the page.
+-->
+
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<div id="root">
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sass.js/0.10.7/sass.sync.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js"></script>
+
+<script src="https://unpkg.com/react@latest/umd/react.development.js"crossorigin></script>
+<script  src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"crossorigin></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prop-types/15.7.2/prop-types.min.js"></script>
+
+
+<script src="https://unpkg.com/babel-standalone@latest/babel.min.js"></script>
+
+<script type="text/babel">
+const {useState, useEffect} = window.React;
+class Counter extends React.Component{
+state={counter:0}
+increment=()=>{
+this.setState({counter:this.state.counter+1});
+}
+componentDidMount(){
+this.setState({counter:42});
+}
+
+componentDidUpdate(){alert("Number of clicks:"+this.state.counter);}
+
+render(){
+return <div>
+ <p>{this.state.counter}</p>
+<button onClick={this.increment}>
+increment
+</button>
+</div>;
+}
+}
+const el =<Counter />;
+ReactDOM.render(el,document.getElementById("root"));
+</script>
+</body>
+</html>
+
+<!-- SIMILARLY ,THE componentWillUnmount() LIFECYCLE METHOD IS CALLED RIGHT BEFORE THE COMPONENT IS REMOVED FROM THE DOM.IT CAN BE USED TO FREE UP RESOURCES 
+TAKEN BY THE COMPONENT-->
+
+

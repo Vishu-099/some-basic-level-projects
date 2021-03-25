@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>React-redux boilerplate by Calvin</title>
+<style>
+h1, p {
+  font-family: Lato;
+}
+ul {
+  padding: 0;
+  margin:10px 0 0 0;
+}
+li {
+  list-style-type: none;
+  padding: 10px;
+  margin: 10px;
+  background-color:rgba(61, 120, 175, 0.411);
+  border-radius: 10px;
+}
+form {
+  margin: 10px;
+}
+
+</style>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+        
+        <script crossorigin src="https://unpkg.com/react@16.13.1/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@16.13.1/umd/react-dom.development.js"></script>
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/4.0.5/redux.min.js"></script>
+        <script src="https://unpkg.com/react-redux@7.2.0/dist/react-redux.min.js"></script>
+
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <!--React app-->
+        <h1>Contact Manager</h1>
+        <div id="root">Loading</div>  
+<script type = "text/babel">
+//</script><script type="text/babel">
+
+const {useState, useEffect} = React;
+
+const { Provider, useSelector, useDispatch } = ReactRedux;
+const { createStore } = Redux;
+
+// const { applyMiddleware } = Redux;
+// const ReduxThunk = window.ReduxThunk.default
+
+// Constants for action types
+const constants = {
+    // constants for addPerson component
+    addPerson: {
+        ADD_PERSON: 'ADD_PERSON'
+    }    
+}
+
+const initialState = {
+    contacts: ["James Smith", "Thomas Anderson", "Bruce Wayne"]
+};
+
+// reducer
+const reducer = (state = initialState, action) => {
+  switch(action.type) {
+    case constants.addPerson.ADD_PERSON:
+      return {...state,
+        contacts: [...state.contacts, action.payload]}
+    default:
+      return state;
+  }
+}
+
+// Redux store
+const store = createStore(reducer);
+
+// actions
+const actions = (() => {
+    const addPerson = (person) => {
+        return {
+            type: constants.addPerson.ADD_PERSON,
+            payload: person
+        }
+    };
+    return {addPerson}    
+})();
+
+
+// Main App component
+const App = () => {
+    return(
+      <Provider store={store}>
+        <AddPersonForm />
+        <PeopleList />
+      </Provider>
+    )
+}
+
+// AddPersonForm component
+const AddPersonForm = () => {
+    const dispatch = useDispatch();
+    const contacts = useSelector((state) => state.contacts);
+    
+    const [person, setPerson] = useState('');
+
+    const handleChange = (e) => {
+        setPerson(e.target.value);
+    }
+
+    
+    const handleSubmit = (e) => {
+        if(person !== '') {
+            dispatch(actions.addPerson(person));
+            setPerson('');
+        }
+        e.preventDefault();
+    }
+  
+    return (
+        <form onSubmit={handleSubmit}>
+          <input type="text" 
+            placeholder="Add new contact" 
+            onChange={handleChange} 
+            value={person} />
+          <button type="submit">Add</button>
+        </form>
+    );
+}
+
+// PeopleList component
+const PeopleList = () => {
+  const contacts = useSelector((state) => state.contacts);
+  const listItems = contacts.map((val, index) =>
+    <li key={index}>{val}</li>
+  );
+  return <ul>{listItems}</ul>;
+}
+
+ReactDOM.render (<App />, document.getElementById("root"))
+
+</script>      
+    </body>
+</html>
